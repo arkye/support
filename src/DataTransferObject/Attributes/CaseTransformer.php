@@ -12,7 +12,7 @@ class CaseTransformer
    * @param string $input DTO case
    * @param string|null $output Serialization case (toArray or toJson)
    */
-  public function __construct(public string $input, public ?string $output)
+  public function __construct(public string $input, public ?string $output = null)
   {
     $this->output ??= $this->input;
   }

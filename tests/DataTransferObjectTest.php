@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Arkye\Support\Tests\DTO\MyDTO;
 use Arkye\Support\Tests\DTO\TestDTO;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -54,6 +55,17 @@ class DataTransferObjectTest extends TestCase
     $dto = new TestDTO($input);
 
     $this->assertJsonStringEqualsJsonString($dto->toJson(), json_encode(array_convert_key_case($input, 'snake')));
+
+    $input = [
+      'Id' => 1,
+      'SentAt' => Carbon::now(),
+      'FullName' => 'My Name',
+      'Tags' => [],
+    ];
+
+    $dto = new MyDTO($input);
+
+    $this->assertJsonStringEqualsJsonString($dto->toJson(), json_encode(array_convert_key_case($input, 'camel')));
   }
 
 }

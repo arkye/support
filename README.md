@@ -78,6 +78,30 @@ $dto = new MyDTO(request()->all());
 response()->json($dto->toArray());
 ```
 
+If you want to convert input but maintain case on conversion to array or json, 
+just leave second argument of CaseTransformation empty (output):
+
+```php
+use Arkye\Support\DataTransferObject\Attributes\CaseTransformer;
+use Arkye\Support\DataTransferObject\DataTransferObject;
+use Carbon\Carbon;
+
+#[CaseTransformer('camel')]
+class MyDTO extends DataTransferObject
+{
+    public Carbon $createdAt;
+    public string $fullName;
+}
+
+// Request came with created_at and full_name
+$dto = new MyDTO(request()->all());
+
+// Do some work with DTO...
+
+// Will be {"createdAt": "something", "fullName": "something"}
+die($dto->tojson());
+```
+
 ## Contributing
 
 Thank you for considering contributing to Arkye! You can read the contribution guide [here](.github/CONTRIBUTING.md).
