@@ -1,7 +1,7 @@
 # Contribute
 
 Please contribute! Here are some things that would be great:
-- [Open an issue!](https://github.com/arkye/repository/issues/new)
+- [Open an issue!](https://github.com/arkye/support/issues/new)
 - Open a pull request!
 - Say hi! :wave:
 
