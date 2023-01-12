@@ -1,25 +1,26 @@
 <?php
 
-namespace Arkye\Support\DataTransferObject\Casters;
+namespace Arkye\Support\Data\Cast;
 
 use Exception;
 use Illuminate\Support\Collection;
-use Spatie\DataTransferObject\Caster;
+use Spatie\LaravelData\Casts\Cast;
+use Spatie\LaravelData\Support\DataProperty;
 
-class CollectionCaster implements Caster
+class CollectionCast implements Cast
 {
 
   /**
    * @throws Exception
    */
-  public function cast(mixed $value): Collection
+  public function cast(DataProperty $property, mixed $value, array $context): Collection
   {
     if ($value instanceof Collection) {
       return $value;
     }
 
     if (! is_array($value) && ! is_string($value)) {
-      throw new Exception("Can only cast arrays or comma separated strings to Collection");
+      throw new Exception("Attribute `{$value}` should be an array or comma separated string");
     }
 
     if (is_array($value)) {

@@ -58,9 +58,7 @@ First argument of transformer specifies the DTO properties case, and second
 the case when converting into array or json.
 
 ```php
-use Arkye\Support\DataTransferObject\Attributes\CaseTransformer;
-use Arkye\Support\DataTransferObject\DataTransferObject;
-use Carbon\Carbon;
+use Arkye\Support\Data\Data\Attributes\Transformers\CaseTransformer;use Arkye\Support\DataTransferObject\DataTransferObject;use Carbon\Carbon;
 
 #[CaseTransformer('camel', 'snake')]
 class MyDTO extends DataTransferObject
@@ -82,9 +80,7 @@ If you want to convert input but maintain case on conversion to array or json,
 just leave second argument of CaseTransformation empty (output):
 
 ```php
-use Arkye\Support\DataTransferObject\Attributes\CaseTransformer;
-use Arkye\Support\DataTransferObject\DataTransferObject;
-use Carbon\Carbon;
+use Arkye\Support\Data\Data\Attributes\Transformers\CaseTransformer;use Arkye\Support\DataTransferObject\DataTransferObject;use Carbon\Carbon;
 
 #[CaseTransformer('camel')]
 class MyDTO extends DataTransferObject
