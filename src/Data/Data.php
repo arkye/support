@@ -2,18 +2,16 @@
 
 namespace Arkye\Support\Data;
 
-use Arkye\Support\Data\Resolvers\ConstructResolver;
-
 abstract class Data extends \Spatie\LaravelData\Data
 {
 
-  public function __construct(...$args)
+  public static function from(mixed ...$payloads): static
   {
-    if (is_array($args[0] ?? null)) {
-      $args = $args[0];
+    if (!isset($payloads[0])) {
+      $payloads = [$payloads];
     }
 
-    app(ConstructResolver::class)->execute($this, collect($args));
+    return parent::from(...$payloads);
   }
 
 }

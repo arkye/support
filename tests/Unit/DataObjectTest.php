@@ -12,14 +12,14 @@ class DataObjectTest extends TestCase
 
   public function testCarbonCaster()
   {
-    $dto = new TestData(sentAt: '2000-01-01');
+    $dto = TestData::from(sentAt: '2000-01-01');
 
     $this->assertInstanceOf(Carbon::class, $dto->sentAt);
   }
 
   public function testCollectionCaster()
   {
-    $dto = new TestData(tags: ['tag1', 'tag2']);
+    $dto = TestData::from(tags: ['tag1', 'tag2']);
 
     $this->assertInstanceOf(Collection::class, $dto->tags);
   }
